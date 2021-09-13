@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:themeable_floating_windows/window_container/window.dart';
+import '../window_container/animation_properties.dart';
+import '../window_container/window.dart';
 import '../window_container/window_container.dart';
 import 'window_back_frame.dart';
 import 'window_front_frame.dart';
@@ -34,6 +35,7 @@ class _ThemeableFloatingWindowManagerState extends State<ThemeableFloatingWindow
               key: window.key,
               duration: window.positionChangeAnimationProperties.duration,
               curve: window.positionChangeAnimationProperties.curve,
+              onEnd: () => window.positionChangeAnimationProperties = AnimationProperties.instant(),
               left: _relativeSizeToRealSize(position.left, constraints.maxWidth),
               top: _relativeSizeToRealSize(position.top, constraints.maxHeight),
               width: _relativeSizeToRealSize(position.width, constraints.maxWidth),
