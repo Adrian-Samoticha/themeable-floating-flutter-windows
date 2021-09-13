@@ -11,8 +11,8 @@
 			"type": "dart"
 		},
 		{
-			"name": "themeable_floating_windows (profile mode)",
-			"cwd": "themeable_floating_windows",
+			"name": "themeable_floating_windows/example (profile mode)",
+			"cwd": "themeable_floating_windows/example",
 			"request": "launch",
 			"type": "dart",
 			"flutterMode": "profile"
