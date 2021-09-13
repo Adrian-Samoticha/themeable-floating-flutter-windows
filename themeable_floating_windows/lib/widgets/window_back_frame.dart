@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:themeable_floating_windows/window_container/window.dart';
+import '../window_container/animation_properties.dart';
+import '../window_container/window.dart';
 
 class WindowBackFrame extends StatelessWidget {
   final Window window;
@@ -30,15 +31,15 @@ class WindowBackFrame extends StatelessWidget {
   
   void _updateDrag(DragUpdateDetails dragUpdateDetails) {
     if (window.properties.isMaximized) {
-      window.restore(const Duration(), Curves.linear);
-      window.moveTo(Offset(window.properties.position.left, 0.0), const Duration(), Curves.linear);
+      window.restore(AnimationProperties.instant());
+      window.moveTo(Offset(window.properties.position.left, 0.0), AnimationProperties.instant());
     }
     
     setState(() {
       window.move(Offset(
         _realSizeToRelativeSize(dragUpdateDetails.delta.dx, constraints.maxWidth),
         _realSizeToRelativeSize(dragUpdateDetails.delta.dy, constraints.maxHeight),
-      ), const Duration(), Curves.linear);
+      ), AnimationProperties.instant());
     });
     window.triggerOnDragUpdateCallback();
   }

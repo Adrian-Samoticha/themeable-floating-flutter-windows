@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:themeable_floating_windows/window_container/window.dart';
+import '../window_container/animation_properties.dart';
+import '../window_container/window.dart';
 
 class WindowFrontFrame extends StatelessWidget {
   final Window window;
@@ -39,12 +40,12 @@ class WindowFrontFrame extends StatelessWidget {
                       column == 1 ? 0.0 :
                                     offsetY;
       
-      final sizeDifference = window.resize(Offset(resizeX, resizeY), const Duration(), Curves.linear);
+      final sizeDifference = window.resize(Offset(resizeX, resizeY), AnimationProperties.instant());
       
       window.move(Offset(
         row == 0 ? -sizeDifference.dx : 0.0,
         column == 0 ? -sizeDifference.dy : 0.0,
-      ), const Duration(), Curves.linear);
+      ), AnimationProperties.instant());
     });
     window.triggerOnResizeUpdateCallback();
   }

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:quiver/core.dart';
 
 import '../themeable_floating_windows.dart';
+import 'animation_properties.dart';
 import 'window_container.dart';
 import 'window_properties.dart';
 
@@ -13,8 +14,7 @@ class Window {
   WindowProperties properties;
   bool isBeingDragged = false;
   bool isBeingResized = false;
-  Duration positionChangeDuration = const Duration();
-  Curve positionChangeCurve = Curves.linear;
+  AnimationProperties positionChangeAnimationProperties = AnimationProperties.instant();
   dynamic metaData;
 
   Window(this.key, this.windowContainer, this.properties);
@@ -50,13 +50,13 @@ class Window {
   }
   
   /// Moves the window.
-  void move(Offset relativeAmount, Duration duration, Curve curve) {
-    windowContainer.moveWindow(this, relativeAmount, duration, curve);
+  void move(Offset relativeAmount, AnimationProperties animationProperties) {
+    windowContainer.moveWindow(this, relativeAmount, animationProperties);
   }
   
   /// Moves the window.
-  void moveTo(Offset position, Duration duration, Curve curve) {
-    windowContainer.moveWindowTo(this, position, duration, curve);
+  void moveTo(Offset position, AnimationProperties animationProperties) {
+    windowContainer.moveWindowTo(this, position, animationProperties);
   }
   
   /// Resizes the window.
@@ -64,18 +64,18 @@ class Window {
   /// If the final size of the window were to be smaller than [minSize]
   /// the size will be capped at [minSize].
   /// Returns the actual amount by which the window has been resized.
-  Offset resize(Offset relativeAmount, Duration duration, Curve curve) {
-   return windowContainer.resizeWindow(this, relativeAmount, duration, curve);
+  Offset resize(Offset relativeAmount, AnimationProperties animationProperties) {
+   return windowContainer.resizeWindow(this, relativeAmount, animationProperties);
   }
   
   /// Maximizes the window.
-  void maximize(Duration duration, Curve curve) {
-    windowContainer.maximizeWindow(this, duration, curve);
+  void maximize(AnimationProperties animationProperties) {
+    windowContainer.maximizeWindow(this, animationProperties);
   }
   
   /// Restores the window.
-  void restore(Duration duration, Curve curve) {
-    windowContainer.restoreWindow(this, duration, curve);
+  void restore(AnimationProperties animationProperties) {
+    windowContainer.restoreWindow(this, animationProperties);
   }
   
   /// Triggers the window's [onClose] callback.

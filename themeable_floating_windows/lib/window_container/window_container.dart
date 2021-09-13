@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:themeable_floating_windows/window_container/window_properties.dart';
 
+import 'animation_properties.dart';
 import 'window.dart';
 
 class WindowContainer {
@@ -53,9 +54,8 @@ class WindowContainer {
   }
   
   /// Moves the [window].
-  void moveWindow(Window window, Offset relativeAmount, Duration duration, Curve curve) {
-    window.positionChangeDuration = duration;
-    window.positionChangeCurve = curve;
+  void moveWindow(Window window, Offset relativeAmount, AnimationProperties animationProperties) {
+    window.positionChangeAnimationProperties = animationProperties;
     
     window.properties.position.left += relativeAmount.dx;
     window.properties.position.top += relativeAmount.dy;
@@ -64,9 +64,8 @@ class WindowContainer {
   }
   
   /// Moves the [window] to a given position.
-  void moveWindowTo(Window window, Offset position, Duration duration, Curve curve) {
-    window.positionChangeDuration = duration;
-    window.positionChangeCurve = curve;
+  void moveWindowTo(Window window, Offset position, AnimationProperties animationProperties) {
+    window.positionChangeAnimationProperties = animationProperties;
     
     window.properties.position.left = position.dx;
     window.properties.position.top = position.dy;
@@ -79,9 +78,8 @@ class WindowContainer {
   /// If the final size of the window were to be smaller than [minSize]
   /// the size will be capped at [minSize].
   /// Returns the actual amount by which the window has been resized.
-  Offset resizeWindow(Window window, Offset relativeAmount, Duration duration, Curve curve) {
-    window.positionChangeDuration = duration;
-    window.positionChangeCurve = curve;
+  Offset resizeWindow(Window window, Offset relativeAmount, AnimationProperties animationProperties) {
+    window.positionChangeAnimationProperties = animationProperties;
     
      final oldSize = Offset(
       window.properties.position.width,
@@ -108,9 +106,8 @@ class WindowContainer {
   }
   
   /// Maximizes a window.
-  void maximizeWindow(Window window, Duration duration, Curve curve) {
-    window.positionChangeDuration = duration;
-    window.positionChangeCurve = curve;
+  void maximizeWindow(Window window, AnimationProperties animationProperties) {
+    window.positionChangeAnimationProperties = animationProperties;
     
     window.properties.isMaximized = true;
     
@@ -118,9 +115,8 @@ class WindowContainer {
   }
   
   /// Restores a window.
-  void restoreWindow(Window window, Duration duration, Curve curve) {
-    window.positionChangeDuration = duration;
-    window.positionChangeCurve = curve;
+  void restoreWindow(Window window, AnimationProperties animationProperties) {
+    window.positionChangeAnimationProperties = animationProperties;
     
     window.properties.isMaximized = false;
     
