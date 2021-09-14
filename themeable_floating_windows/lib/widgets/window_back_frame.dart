@@ -10,8 +10,8 @@ class WindowBackFrame extends StatelessWidget {
   
   const WindowBackFrame({Key? key, required this.window, required this.constraints, required this.setState}) : super(key: key);
   
-  double _realSizeToRelativeSize(double realSize, double maxSize) {
-    return realSize / maxSize;
+  double _absoluteSizeToRelativeSize(double absoluteSize, double maxSize) {
+    return absoluteSize / maxSize;
   }
   
   MouseCursor get _defaultMouseCursor {
@@ -37,8 +37,8 @@ class WindowBackFrame extends StatelessWidget {
     
     setState(() {
       window.move(Offset(
-        _realSizeToRelativeSize(dragUpdateDetails.delta.dx, constraints.maxWidth),
-        _realSizeToRelativeSize(dragUpdateDetails.delta.dy, constraints.maxHeight),
+        _absoluteSizeToRelativeSize(dragUpdateDetails.delta.dx, constraints.maxWidth),
+        _absoluteSizeToRelativeSize(dragUpdateDetails.delta.dy, constraints.maxHeight),
       ), AnimationProperties.instant());
     });
     window.triggerOnDragUpdateCallback();

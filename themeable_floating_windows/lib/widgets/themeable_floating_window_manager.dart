@@ -15,7 +15,7 @@ class ThemeableFloatingWindowManager extends StatefulWidget {
 }
 
 class _ThemeableFloatingWindowManagerState extends State<ThemeableFloatingWindowManager> {
-  double _relativeSizeToRealSize(double relativeSize, double maxSize) {
+  double _relativeSizeToAbsoluteSize(double relativeSize, double maxSize) {
     return relativeSize * maxSize;
   }
 
@@ -36,10 +36,10 @@ class _ThemeableFloatingWindowManagerState extends State<ThemeableFloatingWindow
               duration: window.positionChangeAnimationProperties.duration,
               curve: window.positionChangeAnimationProperties.curve,
               onEnd: () => window.positionChangeAnimationProperties = AnimationProperties.instant(),
-              left: _relativeSizeToRealSize(position.left, constraints.maxWidth),
-              top: _relativeSizeToRealSize(position.top, constraints.maxHeight),
-              width: _relativeSizeToRealSize(position.width, constraints.maxWidth),
-              height: _relativeSizeToRealSize(position.height, constraints.maxHeight),
+              left: _relativeSizeToAbsoluteSize(position.left, constraints.maxWidth),
+              top: _relativeSizeToAbsoluteSize(position.top, constraints.maxHeight),
+              width: _relativeSizeToAbsoluteSize(position.width, constraints.maxWidth),
+              height: _relativeSizeToAbsoluteSize(position.height, constraints.maxHeight),
               child: Stack(
                 children: [
                   LayoutBuilder(

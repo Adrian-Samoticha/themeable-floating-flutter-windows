@@ -17,8 +17,8 @@ class WindowFrontFrame extends StatelessWidget {
     return window.properties.borderWidth;
   }
   
-  double _realSizeToRelativeSize(double realSize, double maxSize) {
-    return realSize / maxSize;
+  double _absoluteSizeToRelativeSize(double absoluteSize, double maxSize) {
+    return absoluteSize / maxSize;
   }
   
   void _startResize(DragStartDetails dragStartDetails, int row, int column) {
@@ -30,8 +30,8 @@ class WindowFrontFrame extends StatelessWidget {
   
   void _updateResize(DragUpdateDetails dragUpdateDetails, int row, int column) {
     setState(() {
-      final offsetX = _realSizeToRelativeSize(dragUpdateDetails.delta.dx, constraints.maxWidth);
-      final offsetY = _realSizeToRelativeSize(dragUpdateDetails.delta.dy, constraints.maxHeight);
+      final offsetX = _absoluteSizeToRelativeSize(dragUpdateDetails.delta.dx, constraints.maxWidth);
+      final offsetY = _absoluteSizeToRelativeSize(dragUpdateDetails.delta.dy, constraints.maxHeight);
       
       final resizeX = row == 0 ? -offsetX :
                       row == 1 ? 0.0 :
