@@ -31,14 +31,16 @@ class WindowBackFrame extends StatelessWidget {
     );
     
     final position = window.properties.position;
+    final horizontalBorderWidth = _absoluteSizeToRelativeSize(window.properties.borderWidth, constraints.maxWidth);
+    final verticalBorderWidth = _absoluteSizeToRelativeSize(window.properties.borderWidth, constraints.maxHeight);
     
     var x = position.left;
-    x = min(x, relativeCursorPosition.dx);
-    x = max(x, relativeCursorPosition.dx - position.width);
+    x = min(x, relativeCursorPosition.dx - horizontalBorderWidth);
+    x = max(x, relativeCursorPosition.dx - position.width + horizontalBorderWidth);
     
     var y = position.top;
-    y = min(y, relativeCursorPosition.dy);
-    y = max(y, relativeCursorPosition.dy - position.height);
+    y = min(y, relativeCursorPosition.dy - verticalBorderWidth);
+    y = max(y, relativeCursorPosition.dy - position.height + verticalBorderWidth);
     
     window.moveTo(
       Offset(x, y),
