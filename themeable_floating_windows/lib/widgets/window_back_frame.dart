@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../window_container/animation_properties.dart';
@@ -22,6 +24,28 @@ class WindowBackFrame extends StatelessWidget {
     return MouseCursor.defer;
   }
   
+  void _moveWindowToCursor(Offset cursorPosition) {
+    final relativeCursorPosition = Offset(
+      _absoluteSizeToRelativeSize(cursorPosition.dx, constraints.maxWidth),
+      _absoluteSizeToRelativeSize(cursorPosition.dy, constraints.maxHeight),
+    );
+    
+    final position = window.properties.position;
+    
+    var x = position.left;
+    x = min(x, relativeCursorPosition.dx);
+    x = max(x, relativeCursorPosition.dx - position.width);
+    
+    var y = position.top;
+    y = min(y, relativeCursorPosition.dy);
+    y = max(y, relativeCursorPosition.dy - position.height);
+    
+    window.moveTo(
+      Offset(x, y),
+      AnimationProperties.instant()
+    );
+  }
+  
   void _startDrag(DragStartDetails dragStartDetails) {
     setState(() {
       window.isBeingDragged = true;
@@ -32,7 +56,7 @@ class WindowBackFrame extends StatelessWidget {
   void _updateDrag(DragUpdateDetails dragUpdateDetails) {
     if (window.properties.isMaximized) {
       window.restore(AnimationProperties.instant());
-      window.moveTo(Offset(window.properties.position.left, 0.0), AnimationProperties.instant());
+      _moveWindowToCursor(dragUpdateDetails.localPosition);
     }
     
     setState(() {
