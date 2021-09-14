@@ -40,12 +40,12 @@ class WindowFrontFrame extends StatelessWidget {
                       column == 1 ? 0.0 :
                                     offsetY;
       
-      final sizeDifference = window.resize(Offset(resizeX, resizeY), AnimationProperties.instant());
+      final sizeDifference = window.resize(Offset(resizeX, resizeY), AnimationProperties.instant);
       
       window.move(Offset(
         row == 0 ? -sizeDifference.dx : 0.0,
         column == 0 ? -sizeDifference.dy : 0.0,
-      ), AnimationProperties.instant());
+      ), AnimationProperties.instant);
     });
     window.triggerOnResizeUpdateCallback();
   }

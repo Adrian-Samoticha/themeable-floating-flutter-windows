@@ -6,12 +6,13 @@ class AnimationProperties {
   final Curve curve;
 
   /// Creates an animation with a given [duration] and [curve].
-  AnimationProperties({required this.duration, this.curve = Curves.linear});
+  const AnimationProperties({required this.duration, this.curve = Curves.linear});
   
   /// Creates an animation that completes instantly, that is, one that does not play at all.
-  AnimationProperties.instant()
-  : duration = const Duration(),
-    curve = Curves.linear;
+  static get instant => const AnimationProperties(
+    duration: Duration(),
+    curve: Curves.linear
+  );
   
   /// Creates a linar animation with a given [duration].
   AnimationProperties.linear(this.duration)

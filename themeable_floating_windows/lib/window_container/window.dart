@@ -14,7 +14,7 @@ class Window {
   WindowProperties properties;
   bool isBeingDragged = false;
   bool isBeingResized = false;
-  AnimationProperties positionChangeAnimationProperties = AnimationProperties.instant();
+  AnimationProperties positionChangeAnimationProperties = AnimationProperties.instant;
   dynamic metaData;
 
   Window(this.key, this.windowContainer, this.properties);

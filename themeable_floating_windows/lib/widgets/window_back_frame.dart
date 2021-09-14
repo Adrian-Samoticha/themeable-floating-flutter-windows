@@ -42,7 +42,7 @@ class WindowBackFrame extends StatelessWidget {
     
     window.moveTo(
       Offset(x, y),
-      AnimationProperties.instant()
+      AnimationProperties.instant
     );
   }
   
@@ -55,7 +55,7 @@ class WindowBackFrame extends StatelessWidget {
   
   void _updateDrag(DragUpdateDetails dragUpdateDetails) {
     if (window.properties.isMaximized) {
-      window.restore(AnimationProperties.instant());
+      window.restore(AnimationProperties.instant);
       _moveWindowToCursor(dragUpdateDetails.localPosition);
     }
     
@@ -63,7 +63,7 @@ class WindowBackFrame extends StatelessWidget {
       window.move(Offset(
         _absoluteSizeToRelativeSize(dragUpdateDetails.delta.dx, constraints.maxWidth),
         _absoluteSizeToRelativeSize(dragUpdateDetails.delta.dy, constraints.maxHeight),
-      ), AnimationProperties.instant());
+      ), AnimationProperties.instant);
     });
     window.triggerOnDragUpdateCallback();
   }

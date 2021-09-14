@@ -35,7 +35,7 @@ class _ThemeableFloatingWindowManagerState extends State<ThemeableFloatingWindow
               key: window.key,
               duration: window.positionChangeAnimationProperties.duration,
               curve: window.positionChangeAnimationProperties.curve,
-              onEnd: () => window.positionChangeAnimationProperties = AnimationProperties.instant(),
+              onEnd: () => window.positionChangeAnimationProperties = AnimationProperties.instant,
               left: _relativeSizeToAbsoluteSize(position.left, constraints.maxWidth),
               top: _relativeSizeToAbsoluteSize(position.top, constraints.maxHeight),
               width: _relativeSizeToAbsoluteSize(position.width, constraints.maxWidth),
