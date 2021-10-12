@@ -1,7 +1,7 @@
 name: themeable_floating_windows
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+repository: https://github.com/Adrian-Samoticha/themeable-floating-flutter-windows
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
