@@ -56,8 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     [Colors.red, () => setState(window.close)],
                     [Colors.green, () => setState(() {
-                      window.properties.isMaximized ? window.restore(AnimationProperties(duration: const Duration(milliseconds: 200), curve: Curves.ease))
-                                                    : window.maximize(AnimationProperties(duration: const Duration(milliseconds: 200), curve: Curves.ease));
+                      window.properties.isMaximized ? window.restore(const AnimationProperties(duration: Duration(milliseconds: 200), curve: Curves.ease))
+                                                    : window.maximize(const AnimationProperties(duration: Duration(milliseconds: 200), curve: Curves.ease));
                     })],
                   ].map((e) => Padding(
                     padding: const EdgeInsets.only(right: 10.0),
