@@ -33,7 +33,8 @@ class Window {
   
   MutableRectangle<double> get renderPosition {
     if (properties.isMaximized) {
-      return MutableRectangle<double>(0.0, 0.0, 1.0, 1.0);
+      final getPosition = properties.getMaximizedPosition ?? () => MutableRectangle<double>(0.0, 0.0, 1.0, 1.0);
+      return getPosition();
     }
     
     return properties.position;

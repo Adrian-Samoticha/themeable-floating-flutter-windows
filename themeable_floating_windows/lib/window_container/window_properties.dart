@@ -20,6 +20,7 @@ class WindowProperties {
   bool isMaximized;
   bool isMinimized;
   Offset minimizationOffset = const Offset(0.0, 0.0);
+  final MutableRectangle<double> Function()? getMaximizedPosition;
   
   final WindowCallback? onClose;
   final WindowCallback? onRaise;
@@ -47,6 +48,7 @@ class WindowProperties {
     this.minSize = const WindowSize(0.1, 0.1),
     this.isMaximized = false,
     this.isMinimized = false,
+    this.getMaximizedPosition,
     
     this.onClose,
     this.onRaise,
